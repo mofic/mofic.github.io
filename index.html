@@ -397,6 +397,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Resources defRes = getResources();</div><div class="line">extRes = <span class="keyword">new</span> Resources(assetManager, defRes.getDisplayMetrics(), defRes.getConfiguration());</div></pre></td></tr></table></figure>
 <p>这样就可以用上面生成的extRes访问外部的资源文件了。</p>
 <h2 id="四、皮肤插件文件的创建"><a href="#四、皮肤插件文件的创建" class="headerlink" title="四、皮肤插件文件的创建"></a>四、皮肤插件文件的创建</h2><p>皮肤插件其实就是一个只包含res文件的apk包，资源的id要与项目中要被替换的id一一对应，打包成apk包，将后缀改为skin（防止被点击安装，也可以改成其他的后缀），当主工程加载该皮肤插件时，可以读取插件中的资源id，进行操作。</p>
+<h2 id="五、插件式换肤demo"><a href="#五、插件式换肤demo" class="headerlink" title="五、插件式换肤demo"></a>五、插件式换肤demo</h2><p>根据以上原理实现的插件式换肤demo</p>
+<p><a href="https://github.com/mofic/SkinDemo" target="_blank" rel="external">https://github.com/mofic/SkinDemo</a></p>
 <p>参考资料</p>
 <ul>
 <li><a href="http://dandanlove.com/2017/11/15/layoutinflater-factory/" target="_blank" rel="external">http://dandanlove.com/2017/11/15/layoutinflater-factory/</a></li>
