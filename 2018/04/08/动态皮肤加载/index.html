@@ -94,16 +94,43 @@
 
 
 
-<meta name="description" content="android developer">
-<meta property="og:type" content="website">
+<meta name="description" content="##一、安卓资源加载过程 1. setContentViewActivity的setContentView实际上调用的是window的setContentView  而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Mofic Blog">
-<meta property="og:url" content="https://mofic.github.io/index.html">
+<meta property="og:url" content="https://mofic.github.io/2018/04/08/动态皮肤加载/index.html">
 <meta property="og:site_name" content="Mofic Blog">
-<meta property="og:description" content="android developer">
+<meta property="og:description" content="##一、安卓资源加载过程 1. setContentViewActivity的setContentView实际上调用的是window的setContentView  而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5cwptcs2j31060hatbq.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5d3s6t1ej30qk05ydgm.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5d5vpkxcj313c0euq5h.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5d7tfu5gj30vc068wff.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5dab18d0j30wa09kmyt.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5dbyxpclj311w0b6jtj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5ddjalpnj30w805st9r.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fq5eumwm0sj30v205y75e.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5ex0how4j31ag0jsgos.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5exhpf5zj30pi06mq3m.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5knx5f4ij316m0c2q4y.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5kpew98ej318i0i2dix.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5kq6xa8dj318o0hwgop.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5m2ob6l8j31020ns0x7.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5lshq723j30y60d040a.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5lt7whs0j311i0nkq8q.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fq5m4l0asnj31600fyn0b.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5m7qqpd6j30r205k74v.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fq5masuenej313a05wwfh.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fq5mb2qbxej30oa0auta5.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5mcape0kj317e0rc44h.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fq5n06sbwmj317a0e8jtz.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fq5mwb5bbcj31720eytbj.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fq5mp6iudvj31bg0t6n3i.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fq5p8rbyhfj315q0yggsx.jpg">
+<meta property="og:updated_time" content="2018-04-09T10:31:23.620Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mofic Blog">
-<meta name="twitter:description" content="android developer">
+<meta name="twitter:description" content="##一、安卓资源加载过程 1. setContentViewActivity的setContentView实际上调用的是window的setContentView  而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5cwptcs2j31060hatbq.jpg">
 
 
 
@@ -132,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="https://mofic.github.io/"/>
+  <link rel="canonical" href="https://mofic.github.io/2018/04/08/动态皮肤加载/"/>
 
 
 
 
 
-  <title>Mofic Blog</title>
+  <title> | Mofic Blog</title>
   
 
 
@@ -157,9 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,9 +267,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -274,9 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/08/动态皮肤加载/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -326,9 +349,7 @@
       
 
       
-        
-          
-            <p>##一、安卓资源加载过程</p>
+        <p>##一、安卓资源加载过程</p>
 <h3 id="1-setContentView"><a href="#1-setContentView" class="headerlink" title="1. setContentView"></a>1. setContentView</h3><p>Activity的setContentView实际上调用的是window的setContentView</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5cwptcs2j31060hatbq.jpg" alt=""></p>
 <p>而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的</p>
@@ -403,8 +424,6 @@
 <li><a href="https://github.com/fengjundev/Android-Skin-Loader" target="_blank" rel="external">https://github.com/fengjundev/Android-Skin-Loader</a></li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -421,140 +440,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mofic.github.io/2017/08/13/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mofic">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=526055347,3943045843&fm=26&gp=0.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mofic Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/13/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T22:02:32+08:00">
-                2017-08-13
-              </time>
+              <a href="/2017/08/13/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -564,10 +471,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -575,6 +483,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -595,8 +507,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=526055347,3943045843&fm=26&gp=0.jpg"
@@ -640,6 +561,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-setContentView"><span class="nav-number">1.</span> <span class="nav-text">1. setContentView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LayoutInflater的inflate过程"><span class="nav-number">2.</span> <span class="nav-text">2. LayoutInflater的inflate过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-LayoutInflater-Factory"><span class="nav-number"></span> <span class="nav-text">二、 LayoutInflater.Factory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-demo"><span class="nav-number">1.</span> <span class="nav-text">2. demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-AppCompatActivity的setFactory过程"><span class="nav-number">2.</span> <span class="nav-text">3. AppCompatActivity的setFactory过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-AppCompatActivity的setFactory解决"><span class="nav-number">3.</span> <span class="nav-text">4. AppCompatActivity的setFactory解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、访问外部资源包"><span class="nav-number"></span> <span class="nav-text">三、访问外部资源包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-自定义AssetManager"><span class="nav-number">1.</span> <span class="nav-text">1. 自定义AssetManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-通过AssetManager构造外部资源的Resources对象"><span class="nav-number">2.</span> <span class="nav-text">2. 通过AssetManager构造外部资源的Resources对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、皮肤插件文件的创建"><span class="nav-number"></span> <span class="nav-text">四、皮肤插件文件的创建</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -759,10 +696,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
