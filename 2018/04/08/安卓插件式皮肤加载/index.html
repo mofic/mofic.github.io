@@ -94,16 +94,43 @@
 
 
 
-<meta name="description" content="android developer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mofic Blog">
-<meta property="og:url" content="https://mofic.github.io/index.html">
+<meta name="description" content="一、安卓资源加载过程1. setContentViewActivity的setContentView实际上调用的是window的setContentView  而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的   C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓插件式皮肤加载">
+<meta property="og:url" content="https://mofic.github.io/2018/04/08/安卓插件式皮肤加载/index.html">
 <meta property="og:site_name" content="Mofic Blog">
-<meta property="og:description" content="android developer">
+<meta property="og:description" content="一、安卓资源加载过程1. setContentViewActivity的setContentView实际上调用的是window的setContentView  而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的   C">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5cwptcs2j31060hatbq.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5d3s6t1ej30qk05ydgm.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5d5vpkxcj313c0euq5h.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5d7tfu5gj30vc068wff.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5dab18d0j30wa09kmyt.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5dbyxpclj311w0b6jtj.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5ddjalpnj30w805st9r.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fq5eumwm0sj30v205y75e.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5ex0how4j31ag0jsgos.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5exhpf5zj30pi06mq3m.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fq5knx5f4ij316m0c2q4y.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5kpew98ej318i0i2dix.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5kq6xa8dj318o0hwgop.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5m2ob6l8j31020ns0x7.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5lshq723j30y60d040a.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5lt7whs0j311i0nkq8q.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fq5m4l0asnj31600fyn0b.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5m7qqpd6j30r205k74v.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fq5masuenej313a05wwfh.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fq5mb2qbxej30oa0auta5.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fq5mcape0kj317e0rc44h.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fq5n06sbwmj317a0e8jtz.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fq5mwb5bbcj31720eytbj.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fq5mp6iudvj31bg0t6n3i.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fq5p8rbyhfj315q0yggsx.jpg">
+<meta property="og:updated_time" content="2018-04-09T15:24:39.592Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mofic Blog">
-<meta name="twitter:description" content="android developer">
+<meta name="twitter:title" content="安卓插件式皮肤加载">
+<meta name="twitter:description" content="一、安卓资源加载过程1. setContentViewActivity的setContentView实际上调用的是window的setContentView  而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的   C">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5cwptcs2j31060hatbq.jpg">
 
 
 
@@ -132,13 +159,13 @@
 
 
 
-  <link rel="canonical" href="https://mofic.github.io/"/>
+  <link rel="canonical" href="https://mofic.github.io/2018/04/08/安卓插件式皮肤加载/"/>
 
 
 
 
 
-  <title>Mofic Blog</title>
+  <title>安卓插件式皮肤加载 | Mofic Blog</title>
   
 
 
@@ -157,9 +184,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,9 +267,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -274,9 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/08/安卓插件式皮肤加载/" itemprop="url">安卓插件式皮肤加载</a></h1>
+          <h1 class="post-title" itemprop="name headline">安卓插件式皮肤加载</h1>
         
 
         <div class="post-meta">
@@ -326,9 +349,7 @@
       
 
       
-        
-          
-            <h2 id="一、安卓资源加载过程"><a href="#一、安卓资源加载过程" class="headerlink" title="一、安卓资源加载过程"></a>一、安卓资源加载过程</h2><h3 id="1-setContentView"><a href="#1-setContentView" class="headerlink" title="1. setContentView"></a>1. setContentView</h3><p>Activity的setContentView实际上调用的是window的setContentView</p>
+        <h2 id="一、安卓资源加载过程"><a href="#一、安卓资源加载过程" class="headerlink" title="一、安卓资源加载过程"></a>一、安卓资源加载过程</h2><h3 id="1-setContentView"><a href="#1-setContentView" class="headerlink" title="1. setContentView"></a>1. setContentView</h3><p>Activity的setContentView实际上调用的是window的setContentView</p>
 <p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fq5cwptcs2j31060hatbq.jpg" alt=""></p>
 <p>而window的实现是PhoneWindow，PhoneWindow的setContentView调用了LayoutInflater的inflate()方法加载布局，这里的LayoutInflater对象是通过from（）方法创建的</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fq5d3s6t1ej30qk05ydgm.jpg" alt=""></p>
@@ -404,8 +425,6 @@
 <li><a href="https://github.com/fengjundev/Android-Skin-Loader" target="_blank" rel="external">https://github.com/fengjundev/Android-Skin-Loader</a></li>
 </ul>
 
-          
-        
       
     </div>
     
@@ -422,12 +441,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -437,10 +456,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -448,6 +468,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -468,8 +492,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=526055347,3943045843&fm=26&gp=0.jpg"
@@ -513,6 +546,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安卓资源加载过程"><span class="nav-number">1.</span> <span class="nav-text">一、安卓资源加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-setContentView"><span class="nav-number">1.1.</span> <span class="nav-text">1. setContentView</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-LayoutInflater的inflate过程"><span class="nav-number">1.2.</span> <span class="nav-text">2. LayoutInflater的inflate过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、-LayoutInflater-Factory"><span class="nav-number">2.</span> <span class="nav-text">二、 LayoutInflater.Factory</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-demo"><span class="nav-number">2.1.</span> <span class="nav-text">2. demo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-AppCompatActivity的setFactory过程"><span class="nav-number">2.2.</span> <span class="nav-text">3. AppCompatActivity的setFactory过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-AppCompatActivity的setFactory解决"><span class="nav-number">2.3.</span> <span class="nav-text">4. AppCompatActivity的setFactory解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、访问外部资源包"><span class="nav-number">3.</span> <span class="nav-text">三、访问外部资源包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-自定义AssetManager"><span class="nav-number">3.1.</span> <span class="nav-text">1. 自定义AssetManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-通过AssetManager构造外部资源的Resources对象"><span class="nav-number">3.2.</span> <span class="nav-text">2. 通过AssetManager构造外部资源的Resources对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、皮肤插件文件的创建"><span class="nav-number">4.</span> <span class="nav-text">四、皮肤插件文件的创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、插件式换肤demo"><span class="nav-number">5.</span> <span class="nav-text">五、插件式换肤demo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -632,10 +681,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
