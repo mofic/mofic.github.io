@@ -257,6 +257,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mofic.github.io/2018/04/15/Jenkins/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mofic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=526055347,3943045843&fm=26&gp=0.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mofic Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/15/Jenkins/" itemprop="url">jenkins持续集成安卓</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T15:48:08+08:00">
+                2018-04-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="jenkins持续集成安卓"><a href="#jenkins持续集成安卓" class="headerlink" title="jenkins持续集成安卓"></a>jenkins持续集成安卓</h2><p>[TOC]</p>
+<h3 id="Jenkins安装"><a href="#Jenkins安装" class="headerlink" title="Jenkins安装"></a>Jenkins安装</h3><p>通过<code>brew install jenkins</code>安装</p>
+<h3 id="Jenkins运行"><a href="#Jenkins运行" class="headerlink" title="Jenkins运行"></a>Jenkins运行</h3><p><code>jenkins</code>运行Jenkins，首次运行会显示秘钥，浏览器输入<code>http://localhost:8080/</code>打开主页面，输入秘钥，创建用户，安装推荐的插件，进入主页。</p>
+<p>系统管理—&gt;系统设置</p>
+<ul>
+<li><h4 id="配置安卓环境变量"><a href="#配置安卓环境变量" class="headerlink" title="配置安卓环境变量"></a>配置安卓环境变量</h4></li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fqdeqd6337j31de0f40u9.jpg" alt="image-20180415144050415"></p>
+<ul>
+<li><h4 id="配置jdk与gradle"><a href="#配置jdk与gradle" class="headerlink" title="配置jdk与gradle"></a>配置jdk与gradle</h4><p>系统管理—&gt;全局工具配置，</p>
+</li>
+</ul>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fqdcks4fl6j31d80hy0ug.jpg" alt="image-20180415145623716"></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fqdcm6hzs1j31de0hqjth.jpg" alt="image-20180415145803782"></p>
+<h3 id="新建任务"><a href="#新建任务" class="headerlink" title="新建任务"></a>新建任务</h3><p>返回主页—&gt;新建任务—&gt;构建一个自由风格的软件项目</p>
+<ul>
+<li><h4 id="源码管理"><a href="#源码管理" class="headerlink" title="源码管理"></a>源码管理</h4></li>
+</ul>
+<p>配置git或svn上的源码地址，这里以git为例</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fqdcsku5xij31ig0qagoj.jpg" alt="image-20180415150404162"></p>
+<p>点击add创建证书，填写git的账号和密码</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fqdctt61j9j31gs0ri77q.jpg" alt="image-20180415150513921"></p>
+<ul>
+<li><h4 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h4></li>
+</ul>
+<p>选择 Invoke Gradle script创建要执行的gradle脚本，task中编写脚本</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">app:</span>clean</div><div class="line"><span class="string">app:</span>assembleRelease</div></pre></td></tr></table></figure>
+<p>打Release包</p>
+<ul>
+<li><h4 id="运行构建"><a href="#运行构建" class="headerlink" title="运行构建"></a>运行构建</h4></li>
+</ul>
+<p>返回任务页，点击立即构建，左下角会生成一条构建记录，查看控制台输出，可以查看构建中出现的一些错误信息</p>
+<ul>
+<li><h4 id="查看生产的文件"><a href="#查看生产的文件" class="headerlink" title="查看生产的文件"></a>查看生产的文件</h4></li>
+</ul>
+<p>生产的文件位于工作空间—&gt;app/build/outputs/apk/release/</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="资源文件混淆"><a href="#资源文件混淆" class="headerlink" title="资源文件混淆"></a>资源文件混淆</h3><p>集成<a href="https://github.com/shwenzhang/AndResGuard" target="_blank" rel="external">AndResGuard</a>，修改gradle脚本为</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">app:</span>clean</div><div class="line"><span class="string">app:</span>resguardRelease</div></pre></td></tr></table></figure>
+<h3 id="多渠道打包"><a href="#多渠道打包" class="headerlink" title="多渠道打包"></a>多渠道打包</h3><p>集成<a href="https://github.com/Meituan-Dianping/walle" target="_blank" rel="external">walle</a>，任务配置—&gt;构建，添加Execute shell添加要执行shell脚本进行多渠道打包，将walle的walle-cli-all.jar文件放到项目的根目录下，添加以下脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd $&#123;WORKSPACE&#125;</div><div class="line">java -jar walle-cli-all.jar batch -f app/channel app/build/outputs/apk/release/AndResGuard_app-release/app-release_7zip_aligned_signed.apk</div></pre></td></tr></table></figure>
+<p><code>app/channel</code>为walle的渠道配置文件位置，后面的为输入的apk文件，这里是经过上面资源文件混淆后并且压缩对齐签名的apk文件</p>
+<h3 id="构建-1"><a href="#构建-1" class="headerlink" title="构建"></a>构建</h3><p>立即构建后会在输入的apk文件同一目录下生成渠道包</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mofic.github.io/2018/04/08/安卓插件式皮肤加载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -484,7 +645,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
