@@ -103,7 +103,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g02m8hzqomj30f5049gma.jpg">
-<meta property="og:updated_time" content="2019-02-11T10:25:47.137Z">
+<meta property="og:updated_time" content="2019-02-11T10:28:47.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义Lint">
 <meta name="twitter:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  [TOC] 概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，li">
@@ -326,7 +326,7 @@
       
 
       
-        <h1 id="自定义Lint"><a href="#自定义Lint" class="headerlink" title="自定义Lint"></a>自定义Lint</h1><blockquote>
+        <h2 id="自定义Lint"><a href="#自定义Lint" class="headerlink" title="自定义Lint"></a>自定义Lint</h2><blockquote>
 <p>本文的工程配置为：</p>
 <p>AS 3.3.0</p>
 <p>gradle 4.10.1</p>
@@ -364,8 +364,7 @@
 <p>导入aar后需要同步一下gradle文件，如果还是不能生效重启AS，更多细节见示例代码。</p>
 <p>示例代码：<a href="https://github.com/mofic/lintDemo" target="_blank" rel="external">https://github.com/mofic/lintDemo</a></p>
 </blockquote>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>####Detector</p>
-<p>自定义lint主要是继承<code>Detector</code>类（Detector用于发现问题），实现相应的<code>Scanner</code>，以下是所有的<code>Scanner</code></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h4 id="Detector"><a href="#Detector" class="headerlink" title="Detector"></a>Detector</h4><p>自定义lint主要是继承<code>Detector</code>类（Detector用于发现问题），实现相应的<code>Scanner</code>，以下是所有的<code>Scanner</code></p>
 <table>
 <thead>
 <tr>
@@ -504,8 +503,7 @@
 <p>GRADLE_FILE</p>
 <p>…</p>
 <h4 id="IssueRegistry"><a href="#IssueRegistry" class="headerlink" title="IssueRegistry"></a>IssueRegistry</h4><p>提供需要被检测的Issue列表，需要继承<code>IssueRegistry</code>重写<code>getIssues</code>方法返回需要扫描的Issue列表。还需要重写<code>getApi</code>返回<code>ApiKt.CURRENT_API</code>否则会报错</p>
-<p>###导出检查报告</p>
-<ol>
+<h3 id="导出检查报告"><a href="#导出检查报告" class="headerlink" title="导出检查报告"></a>导出检查报告</h3><ol>
 <li>mac下使用命令<code>./gradlew lint</code>可以在工程目录/build/report/下生成html报告文件</li>
 <li>也可以在用AS工具栏 - Analyze - Inspect Code工具检查代码</li>
 </ol>
@@ -666,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义Lint"><span class="nav-number">1.</span> <span class="nav-text">自定义Lint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.0.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义Lint-1"><span class="nav-number">1.0.2.</span> <span class="nav-text">自定义Lint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">1.0.3.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISSUE"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">ISSUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Category"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Category</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scope"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IssueRegistry"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">IssueRegistry</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Lint"><span class="nav-number">1.</span> <span class="nav-text">自定义Lint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义Lint-1"><span class="nav-number">1.2.</span> <span class="nav-text">自定义Lint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">1.3.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Detector"><span class="nav-number">1.3.1.</span> <span class="nav-text">Detector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ISSUE"><span class="nav-number">1.3.2.</span> <span class="nav-text">ISSUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Category"><span class="nav-number">1.3.3.</span> <span class="nav-text">Category</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scope"><span class="nav-number">1.3.4.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IssueRegistry"><span class="nav-number">1.3.5.</span> <span class="nav-text">IssueRegistry</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导出检查报告"><span class="nav-number">1.4.</span> <span class="nav-text">导出检查报告</span></a></li></ol></li></ol></div>
             
 
           </div>

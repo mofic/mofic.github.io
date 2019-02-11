@@ -328,7 +328,7 @@
       
         
           
-            <h1 id="自定义Lint"><a href="#自定义Lint" class="headerlink" title="自定义Lint"></a>自定义Lint</h1><blockquote>
+            <h2 id="自定义Lint"><a href="#自定义Lint" class="headerlink" title="自定义Lint"></a>自定义Lint</h2><blockquote>
 <p>本文的工程配置为：</p>
 <p>AS 3.3.0</p>
 <p>gradle 4.10.1</p>
@@ -366,8 +366,7 @@
 <p>导入aar后需要同步一下gradle文件，如果还是不能生效重启AS，更多细节见示例代码。</p>
 <p>示例代码：<a href="https://github.com/mofic/lintDemo" target="_blank" rel="external">https://github.com/mofic/lintDemo</a></p>
 </blockquote>
-<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>####Detector</p>
-<p>自定义lint主要是继承<code>Detector</code>类（Detector用于发现问题），实现相应的<code>Scanner</code>，以下是所有的<code>Scanner</code></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h4 id="Detector"><a href="#Detector" class="headerlink" title="Detector"></a>Detector</h4><p>自定义lint主要是继承<code>Detector</code>类（Detector用于发现问题），实现相应的<code>Scanner</code>，以下是所有的<code>Scanner</code></p>
 <table>
 <thead>
 <tr>
@@ -506,8 +505,7 @@
 <p>GRADLE_FILE</p>
 <p>…</p>
 <h4 id="IssueRegistry"><a href="#IssueRegistry" class="headerlink" title="IssueRegistry"></a>IssueRegistry</h4><p>提供需要被检测的Issue列表，需要继承<code>IssueRegistry</code>重写<code>getIssues</code>方法返回需要扫描的Issue列表。还需要重写<code>getApi</code>返回<code>ApiKt.CURRENT_API</code>否则会报错</p>
-<p>###导出检查报告</p>
-<ol>
+<h3 id="导出检查报告"><a href="#导出检查报告" class="headerlink" title="导出检查报告"></a>导出检查报告</h3><ol>
 <li>mac下使用命令<code>./gradlew lint</code>可以在工程目录/build/report/下生成html报告文件</li>
 <li>也可以在用AS工具栏 - Analyze - Inspect Code工具检查代码</li>
 </ol>
