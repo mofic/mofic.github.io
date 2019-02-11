@@ -94,19 +94,19 @@
 
 
 
-<meta name="description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提">
+<meta name="description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  [TOC] 概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mofic Blog">
+<meta property="og:title" content="自定义Lint">
 <meta property="og:url" content="https://mofic.github.io/2019/02/03/自定义Lint/index.html">
 <meta property="og:site_name" content="Mofic Blog">
-<meta property="og:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提">
+<meta property="og:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  [TOC] 概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，li">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g02m8hzqomj30f5049gma.jpg">
-<meta property="og:updated_time" content="2019-02-11T10:13:36.246Z">
+<meta property="og:updated_time" content="2019-02-11T10:25:47.137Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mofic Blog">
-<meta name="twitter:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提">
+<meta name="twitter:title" content="自定义Lint">
+<meta name="twitter:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  [TOC] 概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，li">
 <meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg">
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <title> | Mofic Blog</title>
+  <title>自定义Lint | Mofic Blog</title>
   
 
 
@@ -276,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">自定义Lint</h1>
         
 
         <div class="post-meta">
@@ -334,6 +334,7 @@
 <p>lint 26.3.0</p>
 <p>系统环境mac</p>
 </blockquote>
+<p>[TOC]</p>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg" alt=""></p>
 <p>我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提供的一个静态代码检查工具，可以扫描代码中存在的一些问题，Android原生提供了上百个的规则，这些规则可以找出代码中存在的错误，以及不规范的地方。使用lint检查有以下几个优点</p>
