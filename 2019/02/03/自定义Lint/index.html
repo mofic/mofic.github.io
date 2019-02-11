@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mofic Blog">
+<meta property="og:url" content="https://mofic.github.io/2019/02/03/自定义Lint/index.html">
+<meta property="og:site_name" content="Mofic Blog">
+<meta property="og:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1g02m8hzqomj30f5049gma.jpg">
+<meta property="og:updated_time" content="2019-02-11T10:13:36.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mofic Blog">
+<meta name="twitter:description" content="自定义Lint 本文的工程配置为： AS 3.3.0 gradle 4.10.1 gradle plugin 3.3.0 lint 26.3.0 系统环境mac  概述由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。  我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提">
+<meta name="twitter:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mofic.github.io/2019/02/03/自定义Lint/"/>
+
+
+
+
+
+  <title> | Mofic Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mofic Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mofic.github.io/2019/02/03/自定义Lint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mofic">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=526055347,3943045843&fm=26&gp=0.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mofic Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-03T16:00:54+08:00">
+                2019-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="自定义Lint"><a href="#自定义Lint" class="headerlink" title="自定义Lint"></a>自定义Lint</h1><blockquote>
+<p>本文的工程配置为：</p>
+<p>AS 3.3.0</p>
+<p>gradle 4.10.1</p>
+<p>gradle plugin 3.3.0</p>
+<p>lint 26.3.0</p>
+<p>系统环境mac</p>
+</blockquote>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>由于团队需要建设代码规范，而生涩的开发规范文档大家又很难记住，于是我想能不能让Android Studio帮我们检查代码就像下图这样。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fzt83j2vkyj312q03wmy0.jpg" alt=""></p>
+<p>我们每天都会看到的Android Studio检查代码的这个工具就是Lint，lint是谷歌提供的一个静态代码检查工具，可以扫描代码中存在的一些问题，Android原生提供了上百个的规则，这些规则可以找出代码中存在的错误，以及不规范的地方。使用lint检查有以下几个优点</p>
+<ol>
+<li><p>Crash预防</p>
+<p>Lint可以很好的检查出一些潜在的Crash，例如原生的NewApi，用于检查代码中是否调用了Android高版本才提供的API。在低版本设备中调用高版本API会导致Crash。</p>
+</li>
+<li><p>Bug预防</p>
+<p>例如要求所有SharedPrefrence读写操作使用基础工具类，工具类中会做各种异常处理，没有使用工具类的将会被检查出来</p>
+</li>
+<li><p>性能/安全问题</p>
+<p>例如在Activity中声明Handler的非静态内部时，lint会提示可能存在内存泄露，需要声明为静态内部类等</p>
+</li>
+<li><p>代码规范</p>
+<p>除了代码风格方面的约束，代码规范更多的是用于减少或防止发生Bug、Crash、性能、安全等问题。很多问题在技术上难以直接检查，我们通过封装统一的基础库、制定代码规范的方式间接解决，而Lint检查则用于减少组内沟通成本、新人学习成本，并确保代码规范的落实。</p>
+</li>
+</ol>
+<p>经过这些检查可以大大提高代码的正确性和规范性，可以有效的发现一些编码阶段就已经出现的问题。</p>
+<p>但是每个团队一般都需要有针对自己框架的一些规范，所以我们需要对lint进行自定义规则。</p>
+<h3 id="自定义Lint-1"><a href="#自定义Lint-1" class="headerlink" title="自定义Lint"></a>自定义Lint</h3><p>根据谷歌最新的demo可以看出，自定义lint的步骤是：</p>
+<ol>
+<li>创建java library，用于定义自定义lint的相关逻辑</li>
+<li>创建Android library，用于将jar包打包进aar中，该lib可以是空实现，只需要将lintchecks依赖于java library即可</li>
+<li>需要检查的项目工程依赖得到的aar包后就能进行检查</li>
+</ol>
+<blockquote>
+<p>导入aar后需要同步一下gradle文件，如果还是不能生效重启AS，更多细节见示例代码。</p>
+<p>示例代码：<a href="https://github.com/mofic/lintDemo" target="_blank" rel="external">https://github.com/mofic/lintDemo</a></p>
+</blockquote>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>####Detector</p>
+<p>自定义lint主要是继承<code>Detector</code>类（Detector用于发现问题），实现相应的<code>Scanner</code>，以下是所有的<code>Scanner</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Scanner接口</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">UastScanner</td>
+<td style="text-align:left">扫描java源码与kotlin源码</td>
+</tr>
+<tr>
+<td style="text-align:left">ClassScanner</td>
+<td style="text-align:left">扫描class文件</td>
+</tr>
+<tr>
+<td style="text-align:left">BinaryResourceScanner</td>
+<td style="text-align:left">扫描二进制文件，如res/raw下的</td>
+</tr>
+<tr>
+<td style="text-align:left">ResourceFolderScanner</td>
+<td style="text-align:left">扫描资源文件夹目录，但不扫描文件</td>
+</tr>
+<tr>
+<td style="text-align:left">XmlScanner</td>
+<td style="text-align:left">扫描xml文件</td>
+</tr>
+<tr>
+<td style="text-align:left">GradleScanner</td>
+<td style="text-align:left">扫描gradle文件</td>
+</tr>
+<tr>
+<td style="text-align:left">OtherFileScanner</td>
+<td style="text-align:left">扫描其他文件</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，代码中的扫描主要使用<code>UastScanner</code></p>
+<blockquote>
+<p>目前3.0+版本的AS和lint-api 25.4.0+扫描源码是UastScanner，低版本是JavaScanner和JavaPsiScanner</p>
+</blockquote>
+<p><code>UastScanner</code>主要方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>appliesToResourceRefs</td>
+<td>是否检测资源文件的引用，返回true则调用<code>visitResourceReference</code>进行扫描</td>
+</tr>
+<tr>
+<td>createUastHandler</td>
+<td>创建一个解析树访问者处理解析树，所有的UastScanner必须提供一个解析树访问者，除非<code>appliesToResourceRefs</code>返回true或者<code>getApplicableMethodNames</code>的返回不为空。如果<code>getApplicableUastTypes</code>返回了一个AST节点则只会扫描该节点，否则遍历AST</td>
+</tr>
+<tr>
+<td>getApplicableConstructorTypes</td>
+<td>返回需要进行检测的构造函数，由<code>visitConstructor</code>进行扫描</td>
+</tr>
+<tr>
+<td>getApplicableMethodNames</td>
+<td>返回需要进行检测的函数，由<code>visitMethodCall</code>进行扫描</td>
+</tr>
+<tr>
+<td>getApplicableReferenceNames</td>
+<td>返回需要进行检测的引用资源名，由<code>visitReference</code>进行扫描</td>
+</tr>
+<tr>
+<td>getApplicableUastTypes</td>
+<td>返回需要进行检测的AST节点，由<code>createUastHandler</code>进行扫描</td>
+</tr>
+<tr>
+<td>applicableSuperClasses</td>
+<td>返回需要进行检测的父类名，由<code>visitClass</code>进行扫描</td>
+</tr>
+</tbody>
+</table>
+<p>以下代码为<code>CleanupDetector</code>的代码片段，该代码主要是检查到SharedPreferences的<code>commit</code>方法可以用<code>apply</code>方法替换，进行提示，并且用快捷键可以进行快速替换的实现，效果如下图</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">String message = <span class="string">"Consider using `apply()` instead; `commit` writes "</span></div><div class="line">                        + <span class="string">"its data to persistent storage immediately, whereas "</span></div><div class="line">                        + <span class="string">"`apply` will handle it in the background"</span>;</div><div class="line">Location location = context.getLocation(node);</div><div class="line"><span class="comment">//LintFix 提供快捷修复错误，如上面代码中快捷替换错误代码片段，支持使用正则表达式。</span></div><div class="line">LintFix fix =LintFix.create()</div><div class="line">            .name(<span class="string">"Replace commit() with apply()"</span>)</div><div class="line">            .replace()</div><div class="line">            .pattern(<span class="string">"(commit)\\s*\\("</span>)</div><div class="line">            .with(<span class="string">"apply"</span>)</div><div class="line">            .build();</div><div class="line"><span class="comment">//如果不需要快捷修复，可以使用JavaContext.report()的其他方法，此时只会进行代码标注(红(Error) / 黄(Waring))提示</span></div><div class="line">context.report(APPLY_SHARED_PREF, node, location, message, fix);</div></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1g02m8hzqomj30f5049gma.jpg" alt=""></p>
+<h4 id="ISSUE"><a href="#ISSUE" class="headerlink" title="ISSUE"></a>ISSUE</h4><p>使用<code>Issue</code>的<code>create</code>方法创建一个<code>Issue</code>对象，<code>create</code>方法参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>Issue的id，需要唯一，不能和as自带的重复，利用Java注解或者XML属性进行屏蔽时，使用的就是这个id</td>
+</tr>
+<tr>
+<td>briefDescription</td>
+<td>简述，鼠标停留时显示的文字提示</td>
+</tr>
+<tr>
+<td>explanation</td>
+<td>简述展开后的详细提示</td>
+</tr>
+<tr>
+<td>category</td>
+<td>提示的类别</td>
+</tr>
+<tr>
+<td>priority</td>
+<td>优先级范围1-10，10最严重。</td>
+</tr>
+<tr>
+<td>severity</td>
+<td>严重级别</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>为Issue和Detector提供映射关系，Detector就是当前Detector。声明扫描检测的范围Scope，Scope用来描述Detector需要分析时需要考虑的文件集，包括：Resource文件或目录、Java文件、Class文件</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Category"><a href="#Category" class="headerlink" title="Category"></a>Category</h4><p>表示lint结果的分类，有：</p>
+<p>COMPLIANCE</p>
+<p>CORRECTNESS</p>
+<p>LINT</p>
+<p>MESSAGES</p>
+<p>…</p>
+<p>Category可以进行自定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCategory</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Category NAMING_CONVENTION = Category.create(<span class="string">"命名规范"</span>, <span class="number">101</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h4><p>表示扫描范围，有：</p>
+<p>RESOURCE_FILE</p>
+<p>JAVA_FILE</p>
+<p>MANIFEST</p>
+<p>GRADLE_FILE</p>
+<p>…</p>
+<h4 id="IssueRegistry"><a href="#IssueRegistry" class="headerlink" title="IssueRegistry"></a>IssueRegistry</h4><p>提供需要被检测的Issue列表，需要继承<code>IssueRegistry</code>重写<code>getIssues</code>方法返回需要扫描的Issue列表。还需要重写<code>getApi</code>返回<code>ApiKt.CURRENT_API</code>否则会报错</p>
+<p>###导出检查报告</p>
+<ol>
+<li>mac下使用命令<code>./gradlew lint</code>可以在工程目录/build/report/下生成html报告文件</li>
+<li>也可以在用AS工具栏 - Analyze - Inspect Code工具检查代码</li>
+</ol>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="https://github.com/googlesamples/android-custom-lint-rules" target="_blank" rel="external">android-custom-lint-rules</a></li>
+<li><a href="https://github.com/alibaba/p3c" target="_blank" rel="external">p3c</a></li>
+<li><a href="https://tech.meituan.com/2016/03/21/android-custom-lint.html" target="_blank" rel="external">Android自定义Lint实践</a></li>
+<li>美团点评2018技术年货</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/15/Jenkins/" rel="next" title="jenkins持续集成安卓">
+                <i class="fa fa-chevron-left"></i> jenkins持续集成安卓
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=526055347,3943045843&fm=26&gp=0.jpg"
+               alt="Mofic" />
+          <p class="site-author-name" itemprop="name">Mofic</p>
+           
+              <p class="site-description motion-element" itemprop="description">android developer</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义Lint"><span class="nav-number">1.</span> <span class="nav-text">自定义Lint</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.0.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义Lint-1"><span class="nav-number">1.0.2.</span> <span class="nav-text">自定义Lint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明"><span class="nav-number">1.0.3.</span> <span class="nav-text">说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ISSUE"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">ISSUE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Category"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Category</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scope"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">Scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IssueRegistry"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">IssueRegistry</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mofic</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
